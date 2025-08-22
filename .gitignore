@@ -1,0 +1,9 @@
+.env
+.idea
+.vscode
+node_modules
+/package.json
+/package-lock.json
+biome.json
+server/**/*.js
+.postgresql

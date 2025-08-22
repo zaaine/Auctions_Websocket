@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+
+        <link rel="stylesheet" href="https://unpkg.com/mvp.css" />
+        <link rel="stylesheet" href="css/app.css" />
+
+        <title>WebSockets</title>
+    </head>
+    <body>
+        <div class="notification-container"></div>
+        <main class="container">
+            <h1>WebSockets</h1>
+
+            <table class="auction_placeholder">
+                <thead>
+                    <tr>
+                        <th>Item</th>
+                        <th>Current Bid</th>
+                        <th>Last bid Time</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+
+            <!--            -->
+            <br />
+
+            <form action="/auction" method="POST">
+                <label for="bid"
+                    >Your bid <small>Example: 1594.56</small></label
+                >
+                <input
+                    type="number"
+                    name="bid"
+                    step="0.01"
+                    min="50"
+                    max="10000"
+                    id="bid"
+                />
+
+                <label for="items"></label>
+                <select name="item_id" id="items">
+                    <option default value="">Votre Choix</option>
+                </select>
+                <button type="submit">Submit your bid</button>
+            </form>
+        </main>
+
+        <template id="auction">
+            <tr>
+                <td class="item"></td>
+                <td class="price"></td>
+                <td class="date"></td>
+            </tr>
+        </template>
+
+        <script type="module" src="/js/app.js"></script>
+    </body>
+</html>

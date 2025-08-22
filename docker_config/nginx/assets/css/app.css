@@ -1,0 +1,30 @@
+.notification-container {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 25px;
+    right: 25px;
+}
+
+.notification {
+    padding: 1em;
+    margin: 0.5em;
+    width: fit-content;
+    color: white;
+    border: 2px solid;
+}
+
+.danger {
+    background-color: red;
+    border-color: darkred;
+}
+
+.warning {
+    background-color: orangered;
+    border-color: orange;
+}
+
+.success {
+    background-color: green;
+    border-color: lightgreen;
+}

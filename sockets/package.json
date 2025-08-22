@@ -1,0 +1,26 @@
+{
+  "name": "sockets",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "watch": "nodemon index.js"
+  },
+  "type": "module",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "ws": "^8.17.0",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "typescript": "^5.4.5",
+    "@types/cors": "^2.8.17",
+    "@types/node": "^20.12.12",
+    "nodemon": "^3.1.1",
+    "ts-node": "^10.9.2",
+    "tslib": "^2.6.2"
+  }
+}

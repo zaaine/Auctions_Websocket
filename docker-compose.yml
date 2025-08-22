@@ -1,0 +1,71 @@
+networks:
+    nodejs:
+        driver: bridge
+
+services:
+    # Front Web server
+    nginx:
+        build:
+            context: .
+            dockerfile: ./docker_config/nginx/nginx.dockerfile
+        ports:
+            - '8080:8080'
+        expose:
+            - '8080'
+        volumes:
+            - ./docker_config/nginx/views:/var/www/html/public/views
+            - ./docker_config/nginx/assets:/var/www/html/public/assets
+        depends_on:
+            - postgresql
+            - sockets
+        networks:
+            - nodejs
+
+    # ws server
+    sockets:
+        image: node:current-alpine3.16
+        volumes:
+            - ./sockets:/var/www/html/sockets
+        networks:
+            - nodejs
+        ports:
+            - '8081:8081'
+        expose:
+            - '8081'
+        working_dir: /var/www/html/sockets
+        entrypoint: ["sh", "-c", "npm install && npm run watch --host 0.0.0.0"]
+
+
+    # Express Back-end
+    express-server:
+        image: node:current-alpine3.16
+        volumes:
+            - ./server:/var/www/html/server
+        networks:
+            - nodejs
+        ports:
+            - '3000:3000'
+        expose:
+            - '3000'
+        env_file:
+            - ./server/.env
+        working_dir: /var/www/html/server
+        entrypoint: ["sh", "-c", "npm install && npm run watch --host 0.0.0.0"]
+        depends_on:
+            - postgresql
+            - sockets
+
+    # Database
+    postgresql:
+        image: postgres:16-alpine3.20
+        environment:
+            POSTGRES_PASSWORD: auctions
+            POSTGRES_USER: auctions
+            POSTGRES_DB: auctions
+        volumes:
+            - ./.postgresql:/var/lib/postgresql/data
+            - ./SQL/create_tables.sql:/docker-entrypoint-initdb.d/create_tables.sql
+        networks:
+            - nodejs
+        depends_on:
+            - sockets

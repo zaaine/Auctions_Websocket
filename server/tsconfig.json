@@ -1,0 +1,51 @@
+{
+    "compilerOptions": {
+        "module": "NodeNext",
+        "target": "ESNext",
+        "rootDir": ".",
+        "outDir": "lib",
+        "alwaysStrict": true,
+        "declaration": true,
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "inlineSourceMap": true,
+        "inlineSources": true,
+        "types": ["node"],
+        "baseUrl": "./",
+        "moduleResolution": "NodeNext",
+        "noEmit": false,
+        "emitDeclarationOnly": false,
+        "noEmitOnError": false,
+        "noFallthroughCasesInSwitch": true,
+        "noImplicitAny": true,
+        "noImplicitReturns": true,
+        "noImplicitThis": true,
+        "noUnusedLocals": true,
+        "noUnusedParameters": true,
+        "resolveJsonModule": true,
+        "strict": true,
+        "strictNullChecks": true,
+        "strictPropertyInitialization": true,
+        "stripInternal": true,
+        "composite": true,
+        "allowUnreachableCode": false,
+        "forceConsistentCasingInFileNames": true,
+        "noUncheckedIndexedAccess": true,
+        "skipLibCheck": true
+    },
+    "include": ["*.ts", "**/*/*.ts"],
+    "watchOptions": {
+        // Use native file system events for files and directories
+        "watchFile": "useFsEvents",
+        "watchDirectory": "useFsEvents",
+        // Poll files for updates more frequently
+        // when they're updated a lot.
+        "fallbackPolling": "dynamicPriority",
+        // Don't coalesce watch notification
+        "synchronousWatchDirectory": true,
+        // Finally, two additional settings for reducing the amount of possible
+        // files to track  work from these directories
+        "excludeDirectories": ["**/node_modules", "_build"],
+        "excludeFiles": ["build/*"]
+    }
+}
