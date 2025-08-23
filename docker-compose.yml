@@ -69,3 +69,11 @@ services:
             - nodejs
         depends_on:
             - sockets
+    adminer:
+        image: adminer
+        ports:
+        - "8100:8080"
+        networks:
+        - nodejs
+
+       
